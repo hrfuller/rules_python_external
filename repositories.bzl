@@ -5,8 +5,7 @@ _RULE_DEPS = [
     (
         "pypi__pip",
         "https://files.pythonhosted.org/packages/00/b6/9cfa56b4081ad13874b0c6f96af8ce16cfbc1cb06bedf8e9164ce5551ec1/pip-19.3.1-py2.py3-none-any.whl",
-        "6917c65fc3769ecdc61405d3dfd97afdedd75808d200b2838d7d961cebc0c2c7",
-    ),
+        "6917c65fc3769ecdc61405d3dfd97afdedd75808d200b2838d7d961cebc0c2c7",),
     (
         "pypi__pkginfo",
         "https://files.pythonhosted.org/packages/e6/d5/451b913307b478c49eb29084916639dc53a88489b993530fed0a66bab8b9/pkginfo-1.5.0.1-py2.py3-none-any.whl",
@@ -45,8 +44,8 @@ all_requirements = [name for (name, _, _) in _RULE_DEPS]
 def requirement(pkg):
     return "@pypi__"+ pkg + "//:lib"
 
-def rules_python_external_dependencies():
-    for (name, url, sha256) in _RULE_DEPS:
+def rules_python_external_dependencies(dep_specs=None):
+    for (name, url, sha256) in dep_specs or _RULE_DEPS:
         maybe(
             http_archive,
             name,
