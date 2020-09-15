@@ -54,7 +54,7 @@ def rules_python_external_dependencies(hostname=None):
         maybe(
             http_archive,
             name,
-            url=url.format(hostname),
+            url=url.format(hostname=hostname),
             sha256=sha256,
             type="zip",
             build_file_content=_GENERIC_WHEEL,
