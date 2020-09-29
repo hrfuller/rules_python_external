@@ -98,6 +98,7 @@ This option is required to support some packages which cannot handle the convers
         ),
     },
     implementation = _pip_repository_impl,
+    local=True,
 )
 
 def pip_install(requirements, name = DEFAULT_REPOSITORY_NAME, **kwargs):
